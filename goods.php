@@ -1,4 +1,5 @@
 <?php
+    echo'<ul class="items">';
     $query_goods = "SELECT * FROM Goods";
     $result_goods = $link -> query($query_goods);
     while($goods = $result_goods -> fetch_assoc()){
@@ -21,4 +22,5 @@
             </div>
         </li>';
     }
+    echo'</ul>';
 ?>

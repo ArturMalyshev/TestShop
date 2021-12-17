@@ -7,11 +7,18 @@
     <title>SHOP</title>
     <link rel="stylesheet" href="style.css">
     <script src="sliderScript.js"></script>
-    <?php include('connect.php'); ?>
+    <script src="phoneMask.js"></script>
+    <?php
+        include('connect.php');
+        session_start();
+        if (!isset($_SESSION['uid'])){
+            $_SESSION['uid'] = time();
+        }
+    ?>
 </head>
 <body>
-<main>
     <?php
+        include('input_checker.php');
         if(isset($_GET['thanks'])){
             echo '
                 <header class="header">
@@ -28,11 +35,7 @@
                 </header>
                 <main class="main">';
             include('slider.html');
-            echo'<ul class="items">';
             include ('goods.php');
-            echo'        
-                </ul>
-                <hr class="hr">';
             include ('get_comments.php');
             include ('create_comments.php');
         }
